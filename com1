@@ -1,0 +1,14 @@
+from datetime import datetime, timedelta
+
+def parse_data(filename):
+    """
+    Зчитує дані з файлу та повертає список словників.
+    """
+    data = []
+    with open(filename, 'r') as f:
+        for line in f:
+            name, date_str, price_str = line.strip().split(',')
+            date = datetime.strptime(date_str, '%Y-%m-%d')
+            price = float(price_str)
+            data.append({'name': name, 'date': date, 'price': price})
+    return data
