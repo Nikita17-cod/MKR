@@ -18,3 +18,11 @@ def test_parse_data():
     assert len(data) == 2
     assert data[0]['name'] == 'Товар A'
     assert data[0]['price'] == 100.0
+
+@pytest.mark.parametrize("product_name, expected_change", [
+    ('Товар A', 10.0),
+    ('Товар B', 0.0),
+    ('Товар C', None),
+])
+def test_get_price_change(sample_data, product_name, expected_change):
+    assert get_price_change(sample_data, product_name) == expected_change
