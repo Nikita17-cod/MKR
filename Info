@@ -1,0 +1,7 @@
+1. Структура проєкту:
+
+price_tracker/
+├── price_tracker.py
+├── test_price_tracker.py
+├── requirements.txt
+└── .gitignore
