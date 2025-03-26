@@ -31,3 +31,14 @@ def get_price_change(data, product_name):
     first_price = last_month_prices[0]
     last_price = last_month_prices[-1]
     return last_price - first_price
+
+if __name__ == '__main__':
+    filename = 'product_prices.txt'
+    product_name = 'Товар A'
+    data = parse_data(filename)
+    price_change = get_price_change(data, product_name)
+
+    if price_change is not None:
+        print(f"Зміна ціни на {product_name} за останній місяць: {price_change}")
+    else:
+        print(f"Немає даних про {product_name} за останній місяць.")
