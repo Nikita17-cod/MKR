@@ -12,3 +12,22 @@ def parse_data(filename):
             price = float(price_str)
             data.append({'name': name, 'date': date, 'price': price})
     return data
+
+def get_price_change(data, product_name):
+    """
+    Повертає зміну ціни на товар за останній місяць.
+    """
+    today = datetime.now()
+    one_month_ago = today - timedelta(days=30)
+
+    product_data = [item for item in data if item['name'] == product_name]
+    product_data.sort(key=lambda x: x['date'])
+
+    last_month_prices = [item['price'] for item in product_data if item['date'] >= one_month_ago]
+
+    if not last_month_prices:
+        return None
+
+    first_price = last_month_prices[0]
+    last_price = last_month_prices[-1]
+    return last_price - first_price
